@@ -1,0 +1,12 @@
+<?php
+
+namespace App\Services;
+
+class ExcelService extends CommonService
+{
+
+    public function __construct()
+    {
+
+    }
+}
