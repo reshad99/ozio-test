@@ -78,17 +78,19 @@ window.ajaxPost = /*#__PURE__*/function () {
           return response.json();
         case 7:
           responseData = _context.sent;
+          console.log(responseData.status);
           if (response.ok) {
-            _context.next = 13;
+            _context.next = 15;
             break;
           }
-          error = new Error(responseData.message || response.statusText);
+          error = new Error(responseData.message);
           error.response = responseData;
           error.status = response.status;
+          error.statusText = responseData.status;
           throw error;
-        case 13:
+        case 15:
           return _context.abrupt("return", responseData);
-        case 14:
+        case 16:
         case "end":
           return _context.stop();
       }
@@ -139,8 +141,9 @@ window.handleValidationErrors = function handleValidationErrors(error) {
   }
 };
 window.fireSwal = function fireSwal(data) {
+  console.log(data.statusText);
   Swal.fire({
-    icon: data.status,
+    type: data.statusText,
     title: data.message,
     text: ''
   });

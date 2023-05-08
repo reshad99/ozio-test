@@ -53,10 +53,12 @@ window.ajaxPost = async function ajaxPost(url, data, method = 'POST') {
         body: data
     });
     const responseData = await response.json();
+    console.log(responseData.status)
     if (!response.ok) {
-        const error = new Error(responseData.message || response.statusText);
+        const error = new Error(responseData.message);
         error.response = responseData;
         error.status = response.status;
+        error.statusText = responseData.status;
         throw error;
     }
     return responseData;
@@ -83,8 +85,9 @@ window.handleValidationErrors = function handleValidationErrors(error) {
 }
 
 window.fireSwal = function fireSwal(data) {
+    console.log(data.statusText)
     Swal.fire({
-        icon: data.status,
+        type: data.statusText,
         title: data.message,
         text: ''
     });
