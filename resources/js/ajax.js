@@ -90,7 +90,7 @@ window.fireSwal = function fireSwal(data) {
         type: data.statusText,
         title: data.message,
         text: ''
-    });
+    }); 
 }
 
 window.loading = function loading(state) {
