@@ -18,7 +18,6 @@ class Datatable extends Component
     public $lastDate = null;
     public $filterColumn = '';
     public $filterStore = null;
-    public $filterValue = null;
     public $filterToggle = 1;
     public $columns;
     public $model;
@@ -34,25 +33,47 @@ class Datatable extends Component
     {
         $this->loading = true;
         $query = $this->model::query();
+    
+        $this->applyUserCardNosFilter($query);
+        $this->applySaleDateFilter($query);
+        $this->applyStoreFilter($query);
+        $this->applySearchFilter($query);
+    
+        $data = $query->paginate(10);
+    
+        return view('livewire.datatable', ['data' => $data]);
+    }
+    
+    private function applyUserCardNosFilter($query)
+    {
         $userCardNos = User::pluck('bonus_card_no')->toArray();
         $query->whereIn('cardno', $userCardNos);
-
+    }
+    
+    private function applySaleDateFilter($query)
+    {
         if ($this->firstDate && $this->lastDate) {
             $query->whereHas('saleReceipts', function ($query) {
-                if ($this->filterToggle)
+                if ($this->filterToggle) {
                     $query->whereBetween('sale_date', [$this->firstDate, $this->lastDate]);
-                else {
+                } else {
                     $query->whereNotBetween('sale_date', [$this->firstDate, $this->lastDate]);
                 }
             });
         }
-
+    }
+    
+    private function applyStoreFilter($query)
+    {
         if ($this->filterStore) {
             $query->whereHas('saleReceipts', function ($query) {
                 $query->where('store_code', $this->filterStore);
             });
         }
-
+    }
+    
+    private function applySearchFilter($query)
+    {
         if ($this->search) {
             $query->where(function ($subQuery) {
                 foreach ($this->columns as $column => $label) {
@@ -67,11 +88,6 @@ class Datatable extends Component
                 }
             });
         }
-
-
-
-        $data = $query->paginate(10);
-
-        return view('livewire.datatable', ['data' => $data]);
     }
+    
 }

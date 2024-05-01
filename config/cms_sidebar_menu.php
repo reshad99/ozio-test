@@ -14,21 +14,21 @@ return [
 
     ],
     [
-        'title' => 'İstifadəçilər',
+        'title' => 'Ozio',
         'icon'  => '<i class="fas fa-user"></i>',
         'inner' => [
             [
-                'title' => 'İstifadəçilər',
+                'title' => 'Kartlar',
                 'route' => 'admin.users.index',
                 'icon'  => '<i class="fas fa-columns"></i>',
                 'can' => 'users.index',
             ],
-            [
-                'title' => 'Rollar',
-                'route' => 'admin.roles.index',
-                'icon'  => '<i class="fas fa-columns"></i>',
-                'can' => 'roles.index',
-            ]
+            // [
+            //     'title' => 'Rollar',
+            //     'route' => 'admin.roles.index',
+            //     'icon'  => '<i class="fas fa-columns"></i>',
+            //     'can' => 'roles.index',
+            // ]
         ],
     ],
     // [
