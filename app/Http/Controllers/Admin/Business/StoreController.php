@@ -16,12 +16,7 @@ class StoreController extends Controller
 
     public function search(Request $request)
     {
-        $request->validate(['q' => ['required', 'string']]);
+        // $request->validate(['q' => ['required', 'string']]);
         return $this->storeService->search($request->q);
-    }
-
-    public function getSaleReceipts(Request $request)
-    {
-        $request->validate(['cardno'=> ['required', 'string']]);
     }
 }
