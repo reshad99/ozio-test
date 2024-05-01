@@ -9,7 +9,7 @@
                         <div class="col-md-6">
                             <h4 class="mt-0 header-title">Kartlar Siyahısı</h4>
                         </div>
-                        <div class="col-md-6" style="text-align: right">@include('admin.pages.user.components.buttons')</div>
+                        {{-- <div class="col-md-6" style="text-align: right">@include('admin.pages.user.components.buttons')</div> --}}
                     </div>
                     @livewire('datatable', ['model' => \App\Models\Bonus::class, 'columns' => ['cardno' => 'Kart nomresi', 'user.name' => 'Istifadeci adi']])
                 </div>
