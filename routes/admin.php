@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\Business\StoreController;
 use App\Http\Controllers\Admin\Users\RoleController;
 use App\Http\Controllers\Admin\Users\UserController;
 use App\Http\Controllers\DashboardController;
@@ -14,6 +15,10 @@ Route::middleware('auth')->group(function () {
         'users' => UserController::class,
         'roles' => RoleController::class,
     ]);
+    Route::name('store.')->prefix('store')->group(function () {
+        Route::get('/search', [StoreController::class, 'search'])->name('search');
+    });
+
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 

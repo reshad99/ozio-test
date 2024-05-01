@@ -1,0 +1,18 @@
+.accordion-row {
+    cursor: pointer;
+  }
+  
+  .accordion {
+    display: none;
+    width: 100%;
+  }
+  
+  .accordion-content {
+    display: none;
+  }
+  
+  
+  /* Only used to remove undeeded padding added by bootstrap */
+  table.table.table-hover>tbody>tr>td {
+    padding: 0;
+  }

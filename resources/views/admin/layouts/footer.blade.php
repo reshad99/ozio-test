@@ -33,6 +33,7 @@
 
 @include('admin.inc.scripts')
 @stack('js_stack')
+@livewireScripts()
 </body>
 
 

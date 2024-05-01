@@ -2,10 +2,12 @@
 
 namespace App\Services\Auth;
 
+use App\Models\Admin;
 use App\Services\CommonService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 class AdminService extends CommonService
